@@ -1,10 +1,10 @@
 [package]
-name = "nu_plugin_template"
+name = "nu_plugin_{{ plugin_name }}"
 version = "0.0.1"
 authors = ["Darren Schroeder"]
 edition = "2021"
-repository = "https://github.com/fdncred/nu_plugin_template"
-description = "nushell plugin template"
+repository = "https://github.com/fdncred/nu_plugin_{{ plugin_name }}"
+description = "a nushell plugin called {{ plugin_name }}"
 license = "MIT"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html

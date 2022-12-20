@@ -9,6 +9,9 @@ bootstrap nushell plugin projects.
 
 ```
 > cargo generate --git https://github.com/fdncred/nu_plugin_template
+Project Name: <you choose a name here like nu_plugin_random>
+What should we call the plugin struct?: <you chose a name like RandomStruct>
+What is the name of this plugin package? <you choose a name like random>
 > cd {{ project-name }}
 > cargo build
 
@@ -31,27 +34,3 @@ your binary will be called `nu_plugin_random`, and you will run it by entering
 - `plugin_struct` - name of the struct that implements the `Plugin` trait from
 `nu-plugin` crate.
 
-
-[nushell]: https://www.nushell.sh/
-[structured types]: https://www.nushell.sh/book/types_of_data.html
-
-This is a nushell plugin template.
-
-# Installing
-
-[add the plugin]: https://www.nushell.sh/book/plugins.html#adding-a-plugin
-[`register`]: https://www.nushell.sh/book/commands/register.html
-
-To [add the plugin] permanently, just install it and call [`register`] on it:
-
-## Using Cargo
-
-```bash
-cargo install nu_plugin_template
-register ~/.cargo/bin/nu_plugin_template
-```
-## Running
-```bash
-'pas' | template faux
-Hello, faux! with value: pas
-```
