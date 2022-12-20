@@ -1,20 +1,20 @@
-mod template;
+mod {{ plugin_name }};
 use nu_plugin::{serve_plugin, EvaluatedCall, LabeledError, MsgPackSerializer, Plugin};
 use nu_protocol::{Category, Signature, Spanned, SyntaxShape, Value};
 
-struct Template;
+struct {{ plugin_struct }};
 
-impl Template {
+impl {{ plugin_struct }} {
     fn new() -> Self {
         Self {}
     }
 }
 
-impl Plugin for Template {
+impl Plugin for {{ plugin_struct }} {
     fn signature(&self) -> Vec<Signature> {
-        vec![Signature::build("template")
-            .usage("View template")
-            .required("path", SyntaxShape::String, "path to template file")
+        vec![Signature::build("{{ plugin_name }}")
+            .usage("View {{ plugin_name }} results")
+            .required("path", SyntaxShape::String, "path to {{ plugin_name }} input file")
             .category(Category::Experimental)]
     }
 
@@ -24,12 +24,12 @@ impl Plugin for Template {
         call: &EvaluatedCall,
         input: &Value,
     ) -> Result<Value, LabeledError> {
-        assert_eq!(name, "template");
+        assert_eq!(name, "{{ plugin_name }}");
         let param: Option<Spanned<String>> = call.opt(0)?;
 
         let ret_val = match input {
             Value::String { val, span } => {
-                crate::template::template_do_something(param, val, *span)?
+                crate::{{ plugin_name }}::{{ plugin_name }}_do_something(param, val, *span)?
             }
             v => {
                 return Err(LabeledError {
@@ -45,5 +45,5 @@ impl Plugin for Template {
 }
 
 fn main() {
-    serve_plugin(&mut Template::new(), MsgPackSerializer);
+    serve_plugin(&mut {{ plugin_struct }}::new(), MsgPackSerializer);
 }

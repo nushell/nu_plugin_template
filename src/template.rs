@@ -1,7 +1,7 @@
 use nu_plugin::LabeledError;
 use nu_protocol::{Span, Spanned, Value};
 
-pub fn template_do_something(
+pub fn {{ plugin_name }}_do_something(
     param: Option<Spanned<String>>,
     val: &str,
     value_span: Span,
