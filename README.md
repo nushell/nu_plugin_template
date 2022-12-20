@@ -9,17 +9,17 @@ bootstrap nushell plugin projects.
 
 ```
 > cargo generate --git https://github.com/fdncred/nu_plugin_template
-Project Name: <you choose a name here like nu_plugin_random>
+Project Name: <you choose a name here like nu-plugin-random>
 What should we call the plugin struct?: <you chose a name like RandomStruct>
 What is the name of this plugin package? <you choose a name like random>
-> cd {{ project-name }}
+> cd nu-plugin-random
 > cargo build
 
 # You only need to run this once per nushell session, or after updating the
 # signature of the plugin.
-> register ./target/debug/{{ plugin_name }}
+> register ./target/debug/nu-plugin-random
 
-> 'pas' | {{ plugin_name }} faux
+> 'pas' | random faux
 Hello, faux! with value: pas
 ```
 
