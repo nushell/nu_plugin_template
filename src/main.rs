@@ -1,6 +1,6 @@
 mod {{ plugin_name }};
 use nu_plugin::{serve_plugin, EvaluatedCall, LabeledError, MsgPackSerializer, Plugin};
-use nu_protocol::{Category, Signature, Spanned, SyntaxShape, Value};
+use nu_protocol::{Category, PluginExample, PluginSignature, Spanned, SyntaxShape, Value};
 
 struct {{ plugin_struct }};
 
@@ -11,11 +11,16 @@ impl {{ plugin_struct }} {
 }
 
 impl Plugin for {{ plugin_struct }} {
-    fn signature(&self) -> Vec<Signature> {
-        vec![Signature::build("{{ plugin_name }}")
+    fn signature(&self) -> Vec<PluginSignature> {
+        vec![PluginSignature::build("{{ plugin_name }}")
             .usage("View {{ plugin_name }} results")
             .required("path", SyntaxShape::String, "path to {{ plugin_name }} input file")
-            .category(Category::Experimental)]
+            .category(Category::Experimental)
+            .plugin_examples(vec![PluginExample {
+                description: "This is the example descripion".into(),
+                example: "some pipeline involving {{ plugin_name }}".into(),
+                result: None,
+            }])]
     }
 
     fn run(
