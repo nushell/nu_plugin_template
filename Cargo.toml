@@ -1,9 +1,8 @@
 [package]
 name = "nu_plugin_{{ plugin_name }}"
-version = "0.0.2"
-authors = ["Darren Schroeder"]
+version = "0.1.0"
+authors = ["{{authors}}"]
 edition = "2021"
-repository = "https://github.com/fdncred/nu_plugin_{{ plugin_name }}"
 description = "a nushell plugin called {{ plugin_name }}"
 license = "MIT"
 
@@ -11,8 +10,8 @@ license = "MIT"
 
 [dependencies]
 # for local development, you can use a path dependency
-# nu-plugin = { path = "../nushell/crates/nu-plugin", version = "0.75.1"}
-# nu-protocol = { path = "../nushell/crates/nu-protocol", version="0.75.1"}
-nu-plugin = "0.80.0"
-nu-protocol = "0.80.0"
+# nu-plugin = { path = "../nushell/crates/nu-plugin" }
+# nu-protocol = { path = "../nushell/crates/nu-protocol", features = ["plugin"] }
+nu-plugin = "0.92.0"
+nu-protocol = { version = "0.92.0", features = ["plugin"] }
 

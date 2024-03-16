@@ -2,7 +2,17 @@
 type = "string"
 prompt = "What is the name of this plugin package? (will automatically be prefixed by nu_plugin_)"
 
-[placeholders.plugin_struct]
+[placeholders.command_name]
 type = "string"
-prompt = "What should we call the plugin struct? (Thing that implements nu_plugin::Plugin)"
-default = "Implementation"
+prompt = "What should your first command be called? (spaces are okay)"
+
+[placeholders.command_is_simple]
+type = "string"
+prompt = "Would you like a simple command? Say no if you would like to use streaming."
+choices = [
+  "Yes",
+  "No"
+]
+
+[hooks]
+pre = ["setup.rhai"]
