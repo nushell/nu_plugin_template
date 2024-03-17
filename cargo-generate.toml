@@ -1,10 +1,15 @@
-[placeholders.plugin_name]
-type = "string"
-prompt = "What is the name of this plugin package? (will automatically be prefixed by nu_plugin_)"
-
 [placeholders.command_name]
 type = "string"
 prompt = "What should your first command be called? (spaces are okay)"
+
+[placeholders.single_command]
+type = "string"
+prompt = "Do you intend to create more than one command / subcommand?"
+choices = [
+  "Yes",
+  "No"
+]
+default = "No"
 
 [placeholders.command_is_simple]
 type = "string"
@@ -14,5 +19,11 @@ choices = [
   "No"
 ]
 
+[placeholders.github_username]
+type = "string"
+prompt = "What is your GitHub username? (Leave blank if you don't want to publish to GitHub)"
+default = ""
+
 [hooks]
-pre = ["setup.rhai"]
+init = ["init.rhai"]
+pre = ["pre.rhai"]
