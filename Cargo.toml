@@ -1,9 +1,12 @@
 [package]
-name = "nu_plugin_{{ plugin_name }}"
+name = "{{ project-name }}"
 version = "0.1.0"
 authors = ["{{authors}}"]
 edition = "2021"
 description = "a nushell plugin called {{ plugin_name }}"
+{% if github_username != empty -%}
+repository = "https://github.com/{{ github_username }}/{{ project-name }}"
+{% endif -%}
 license = "MIT"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
