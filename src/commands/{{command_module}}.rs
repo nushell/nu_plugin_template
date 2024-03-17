@@ -12,7 +12,7 @@ use crate::{{ plugin_struct }};
 
 pub struct {{ command_struct }};
 
-{% if command_is_simple == "Yes" %}
+{% if command_is_simple == "Yes" -%}
 impl SimplePluginCommand for {{ command_struct }} {
     type Plugin = {{ plugin_struct }};
 
@@ -50,7 +50,7 @@ impl SimplePluginCommand for {{ command_struct }} {
         Ok(Value::string(greeting, call.head))
     }
 }
-{% else %}
+{%- else -%}
 impl PluginCommand for {{ command_struct }} {
     type Plugin = {{ plugin_struct }};
 
@@ -100,4 +100,4 @@ impl PluginCommand for {{ command_struct }} {
         }, None)?)
     }
 }
-{% endif %}
+{%- endif %}

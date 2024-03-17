@@ -2,7 +2,7 @@
 type = "string"
 prompt = "What should your first command be called? (spaces are okay)"
 
-[placeholders.single_command]
+[placeholders.multi_command]
 type = "string"
 prompt = "Do you intend to create more than one command / subcommand?"
 choices = [
@@ -27,3 +27,6 @@ default = ""
 [hooks]
 init = ["init.rhai"]
 pre = ["pre.rhai"]
+
+[conditional.'multi_command == "No"']
+ignore = ["src/commands"]
