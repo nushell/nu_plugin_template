@@ -1,4 +1,8 @@
-let plugin_name = variable::prompt("What will this plugin be named?").to_snake_case();
+let plugin_name = variable::get("project-name");
+
+if plugin_name.is_empty() {
+    plugin_name = variable::prompt("What will this plugin be named?").to_snake_case();
+}
 
 if plugin_name.starts_with("nu_plugin_") {
     plugin_name.replace("nu_plugin_", "");
