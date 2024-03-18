@@ -4,7 +4,7 @@ use nu_plugin::{MsgPackSerializer, Plugin, PluginCommand, serve_plugin};
 use nu_plugin::{EngineInterface, EvaluatedCall, LabeledError, SimplePluginCommand};
 use nu_protocol::{Category, PluginExample, PluginSignature, SyntaxShape, Value};
 {%- else -%}
-use nu_plugin::{EngineInterface, EvaluatedCall, LabeledError, PluginCommand};
+use nu_plugin::{EngineInterface, EvaluatedCall, LabeledError};
 use nu_protocol::{
     Category, PipelineData, PluginExample, PluginSignature, Type, Value,
 };

@@ -1,3 +1,6 @@
+[template]
+ignore = ["test.nu"]
+
 [placeholders.command_name]
 type = "string"
 prompt = "What should your first command be called? (spaces are okay)"
