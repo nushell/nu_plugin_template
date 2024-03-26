@@ -7,7 +7,7 @@ You must run `cargo generate` with `--force`.
 ## Usage:
 
 ```
-> cargo generate --force --git https://github.com/fdncred/nu_plugin_template
+> cargo generate --force --git https://github.com/nushell/nu_plugin_template
 🤷   What will this plugin be named?: foo
 Creating a new plugin named "foo"
 Your plugin crate will be named "nu_plugin_foo".
