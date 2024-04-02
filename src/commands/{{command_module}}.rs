@@ -121,3 +121,17 @@ impl PluginCommand for {{ command_struct }} {
     }
 }
 {%- endif %}
+
+#[test]
+fn test_examples() -> Result<(), nu_protocol::ShellError> {
+    use nu_plugin_test_support::PluginTest;
+
+    // This will automatically run the examples specified in your command and compare their actual
+    // output against what was specified in the example.
+    //
+    // We recommend you add this test to any other commands you create, or remove it if the examples
+    // can't be tested this way.
+
+    PluginTest::new("{{ plugin_name }}", {{ plugin_struct }}.into())?
+        .test_command_examples(&{{ command_struct }})
+}
