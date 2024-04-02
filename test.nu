@@ -20,7 +20,7 @@ for command_is_simple in [Yes, No] {
                         --define $"multi_command=($multi_command)"
                         --define github_username=
                 )
-                do { cd nu_plugin_test_plugin; ^cargo check }
+                do { cd nu_plugin_test_plugin; ^cargo test }
                 rm -r nu_plugin_test_plugin
             }
         } catch { |err|
