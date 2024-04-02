@@ -38,14 +38,14 @@ impl SimplePluginCommand for {{ command_struct }} {
             .switch("shout", "(FIXME) Yell it instead", None)
             .plugin_examples(vec![
                 PluginExample {
-                    example: "{{ command_name }} Ferris".into(),
-                    description: "Say hello to Ferris".into(),
-                    result: Some(Value::test_string("Hello, Ferris. How are you today?")),
+                    example: "{{ command_name }} Ellie".into(),
+                    description: "Say hello to Ellie".into(),
+                    result: Some(Value::test_string("Hello, Ellie. How are you today?")),
                 },
                 PluginExample {
-                    example: "{{ command_name }} --shout Ferris".into(),
-                    description: "Shout hello to Ferris".into(),
-                    result: Some(Value::test_string("HELLO, FERRIS. HOW ARE YOU TODAY?")),
+                    example: "{{ command_name }} --shout Ellie".into(),
+                    description: "Shout hello to Ellie".into(),
+                    result: Some(Value::test_string("HELLO, ELLIE. HOW ARE YOU TODAY?")),
                 },
             ])
             .category(Category::Experimental)
@@ -76,17 +76,17 @@ impl PluginCommand for {{ command_struct }} {
             .input_output_type(Type::List(Type::String.into()), Type::List(Type::String.into()))
             .plugin_examples(vec![
                 PluginExample {
-                    example: "[ Ferris ] | {{ command_name }}".into(),
-                    description: "Say hello to Ferris".into(),
+                    example: "[ Ellie ] | {{ command_name }}".into(),
+                    description: "Say hello to Ellie".into(),
                     result: Some(Value::test_list(vec![
-                        Value::test_string("Hello, Ferris. How are you today?")
+                        Value::test_string("Hello, Ellie. How are you today?")
                     ])),
                 },
                 PluginExample {
-                    example: "[ Ferris ] | {{ command_name }} --shout".into(),
-                    description: "Shout hello to Ferris".into(),
+                    example: "[ Ellie ] | {{ command_name }} --shout".into(),
+                    description: "Shout hello to Ellie".into(),
                     result: Some(Value::test_list(vec![
-                        Value::test_string("HELLO, FERRIS. HOW ARE YOU TODAY?")
+                        Value::test_string("HELLO, ELLIE. HOW ARE YOU TODAY?")
                     ])),
                 },
             ])

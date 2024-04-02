@@ -35,8 +35,8 @@ try again with --force.
 > cd nu_plugin_foo
 > cargo build
 > register target/debug/nu_plugin_foo
-> foo Ferris
-Hello, Ferris. How are you today?
+> foo Ellie
+Hello, Ellie. How are you today?
 ```
 
 ## Config values
