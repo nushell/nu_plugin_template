@@ -1,13 +1,11 @@
 use nu_plugin::{MsgPackSerializer, Plugin, PluginCommand, serve_plugin};
 {% if multi_command == "No" -%}
 {%- if command_is_simple == "Yes" -%}
-use nu_plugin::{EngineInterface, EvaluatedCall, LabeledError, SimplePluginCommand};
-use nu_protocol::{Category, PluginExample, PluginSignature, SyntaxShape, Value};
+use nu_plugin::{EngineInterface, EvaluatedCall, SimplePluginCommand};
+use nu_protocol::{Category, Example, LabeledError, Signature, SyntaxShape, Value};
 {%- else -%}
-use nu_plugin::{EngineInterface, EvaluatedCall, LabeledError};
-use nu_protocol::{
-    Category, PipelineData, PluginExample, PluginSignature, Type, Value,
-};
+use nu_plugin::{EngineInterface, EvaluatedCall};
+use nu_protocol::{Category, Example, LabeledError, PipelineData, Signature, Type, Value};
 {%- endif %}
 {%- else %}
 mod commands;
@@ -32,23 +30,34 @@ pub struct {{ command_struct }};
 impl SimplePluginCommand for {{ command_struct }} {
     type Plugin = {{ plugin_struct }};
 
-    fn signature(&self) -> PluginSignature {
-        PluginSignature::build("{{ command_name }}")
+    fn name(&self) -> &str {
+        "{{ command_name }}"
+    }
+
+    fn signature(&self) -> Signature {
+        Signature::build(PluginCommand::name(self))
             .required("name", SyntaxShape::String, "(FIXME) A demo parameter - your name")
             .switch("shout", "(FIXME) Yell it instead", None)
-            .plugin_examples(vec![
-                PluginExample {
-                    example: "{{ command_name }} Ellie".into(),
-                    description: "Say hello to Ellie".into(),
-                    result: Some(Value::test_string("Hello, Ellie. How are you today?")),
-                },
-                PluginExample {
-                    example: "{{ command_name }} --shout Ellie".into(),
-                    description: "Shout hello to Ellie".into(),
-                    result: Some(Value::test_string("HELLO, ELLIE. HOW ARE YOU TODAY?")),
-                },
-            ])
             .category(Category::Experimental)
+    }
+
+    fn usage(&self) -> &str {
+        "(FIXME) help text for {{ command_name }}"
+    }
+
+    fn examples(&self) -> Vec<Example> {
+        vec![
+            Example {
+                example: "{{ command_name }} Ellie",
+                description: "Say hello to Ellie",
+                result: Some(Value::test_string("Hello, Ellie. How are you today?")),
+            },
+            Example {
+                example: "{{ command_name }} --shout Ellie",
+                description: "Shout hello to Ellie",
+                result: Some(Value::test_string("HELLO, ELLIE. HOW ARE YOU TODAY?")),
+            },
+        ]
     }
 
     fn run(
@@ -70,27 +79,38 @@ impl SimplePluginCommand for {{ command_struct }} {
 impl PluginCommand for {{ command_struct }} {
     type Plugin = {{ plugin_struct }};
 
-    fn signature(&self) -> PluginSignature {
-        PluginSignature::build("{{ command_name }}")
+    fn name(&self) -> &str {
+        "{{ command_name }}"
+    }
+
+    fn signature(&self) -> Signature {
+        Signature::build(self.name())
             .switch("shout", "(FIXME) Yell it instead", None)
             .input_output_type(Type::List(Type::String.into()), Type::List(Type::String.into()))
-            .plugin_examples(vec![
-                PluginExample {
-                    example: "[ Ellie ] | {{ command_name }}".into(),
-                    description: "Say hello to Ellie".into(),
-                    result: Some(Value::test_list(vec![
-                        Value::test_string("Hello, Ellie. How are you today?")
-                    ])),
-                },
-                PluginExample {
-                    example: "[ Ellie ] | {{ command_name }} --shout".into(),
-                    description: "Shout hello to Ellie".into(),
-                    result: Some(Value::test_list(vec![
-                        Value::test_string("HELLO, ELLIE. HOW ARE YOU TODAY?")
-                    ])),
-                },
-            ])
             .category(Category::Experimental)
+    }
+
+    fn usage(&self) -> &str {
+        "(FIXME) help text for {{ command_name }}"
+    }
+
+    fn examples(&self) -> Vec<Example> {
+        vec![
+            Example {
+                example: "[ Ellie ] | {{ command_name }}",
+                description: "Say hello to Ellie",
+                result: Some(Value::test_list(vec![
+                    Value::test_string("Hello, Ellie. How are you today?")
+                ])),
+            },
+            Example {
+                example: "[ Ellie ] | {{ command_name }} --shout",
+                description: "Shout hello to Ellie",
+                result: Some(Value::test_list(vec![
+                    Value::test_string("HELLO, ELLIE. HOW ARE YOU TODAY?")
+                ])),
+            },
+        ]
     }
 
     fn run(
