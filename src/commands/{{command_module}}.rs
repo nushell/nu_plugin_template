@@ -3,7 +3,7 @@ use nu_plugin::{EngineInterface, EvaluatedCall, SimplePluginCommand};
 use nu_protocol::{Category, Example, LabeledError, Signature, SyntaxShape, Value};
 {%- else -%}
 use nu_plugin::{EngineInterface, EvaluatedCall, PluginCommand};
-use nu_protocol::{Category, Example, LabeledError, PipelineData, Signature, Type, Value};
+use nu_protocol::{Category, Example, LabeledError, PipelineData, Signals, Signature, Type, Value};
 {%- endif %}
 
 use crate::{{ plugin_struct }};
@@ -117,7 +117,7 @@ impl PluginCommand for {{ command_struct }} {
                 }
                 Err(err) => Value::error(err, span),
             }
-        }, None)?)
+        }, &Signals::empty())?)
     }
 }
 {%- endif %}

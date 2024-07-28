@@ -34,7 +34,8 @@ try again with --force.
 ✨   Done! New project created /var/home/devyn/Projects/nushell/nu_plugin_foo
 > cd nu_plugin_foo
 > cargo build
-> register target/debug/nu_plugin_foo
+> plugin add target/debug/nu_plugin_foo
+> plugin use foo
 > foo Ellie
 Hello, Ellie. How are you today?
 ```
