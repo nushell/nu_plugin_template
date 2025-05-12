@@ -47,7 +47,7 @@ impl SimplePluginCommand for {{ command_struct }} {
             .category(Category::Experimental)
     }
 
-    fn usage(&self) -> &str {
+    fn description(&self) -> &str {
         "(FIXME) help text for {{ command_name }}"
     }
 
@@ -96,7 +96,7 @@ impl PluginCommand for {{ command_struct }} {
             .category(Category::Experimental)
     }
 
-    fn usage(&self) -> &str {
+    fn description(&self) -> &str {
         "(FIXME) help text for {{ command_name }}"
     }
 
